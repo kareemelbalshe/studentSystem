@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="f">
+      <button id="f1">فرقة اولي</button>
+      <button id="f2">فرقة ثانية</button>
+      <button id="f3">فرقة ثالثة</button>
+      <button id="f4">فرقة رابعة</button>
+    </div>
+    <br />
+    <input type="text" name="" id="addSTD" />
+    <button id="btnSTD">add student</button>
+    <br />
+    <input type="text" name="" id="addSUB" />
+    <button id="btnSUB">add subject</button>
+    <br />
+    <br />
+    <table id="student">
+      <tr>
+        <td>id</td>
+        <td>student</td>
+      </tr>
+    </table>
+    <br />
+    <table id="subject">
+      <tr>
+        <td>subject</td>
+      </tr>
+    </table>
+    <script>
+      const f1 = document.getElementById("f1"),
+        f2 = document.getElementById("f2"),
+        f3 = document.getElementById("f3"),
+        f4 = document.getElementById("f4"),
+        addSTD = document.getElementById("addSTD"),
+        btnSTD = document.getElementById("btnSTD"),
+        addSUB = document.getElementById("addSUB"),
+        btnSUB = document.getElementById("btnSUB"),
+        student = document.getElementById("student"),
+        subject = document.getElementById("subject");
+
+      let arrF1 = [],
+        arrF2 = [],
+        arrF3 = [],
+        arrF4 = [],
+        arrFs1 = [],
+        arrFs2 = [],
+        arrFs3 = [],
+        arrFs4 = [];
+      event = 1;
+
+      f1.addEventListener("click", () => {
+        event = 1;
+        console.log(event);
+
+        if (localStorage.student1 != null) {
+          arrF1 = JSON.parse(localStorage.student1);
+        } else {
+          arrF1 = [];
+        }
+
+        if (localStorage.subject1 != null) {
+          arrFs1 = JSON.parse(localStorage.subject1);
+        } else {
+          arrFs1 = [];
+        }
+        showSTD(1);
+        showSUB(1);
+      });
+
+      f2.addEventListener("click", () => {
+        event = 2;
+        console.log(event);
+
+        if (localStorage.student2 != null) {
+          arrF2 = JSON.parse(localStorage.student2);
+        } else {
+          arrF2 = [];
+        }
+
+        if (localStorage.subject2 != null) {
+          arrFs2 = JSON.parse(localStorage.subject2);
+        } else {
+          arrFs2 = [];
+        }
+
+        showSTD(2);
+        showSUB(2);
+      });
+
+      f3.addEventListener("click", () => {
+        event = 3;
+        console.log(event);
+
+        if (localStorage.student3 != null) {
+          arrF3 = JSON.parse(localStorage.student3);
+        } else {
+          arrF3 = [];
+        }
+
+        if (localStorage.subject3 != null) {
+          arrFs3 = JSON.parse(localStorage.subject3);
+        } else {
+          arrFs3 = [];
+        }
+
+        showSTD(3);
+        showSUB(3);
+      });
+
+      f4.addEventListener("click", () => {
+        event = 4;
+        console.log(event);
+
+        if (localStorage.student4 != null) {
+          arrF4 = JSON.parse(localStorage.student4);
+        } else {
+          arrF4 = [];
+        }
+
+        if (localStorage.subject4 != null) {
+          arrFs4 = JSON.parse(localStorage.subject4);
+        } else {
+          arrFs4 = [];
+        }
+
+        showSTD(4);
+        showSUB(4);
+      });
+
+      btnSTD.addEventListener("click", () => {
+        console.log(event);
+        if (event === 1) {
+          let s = addSTD.value;
+          if (s.trim() !== "") {
+            arrF1.push(s);
+            arrF1.sort();
+            localStorage.setItem("student1", JSON.stringify(arrF1));
+          }
+          addSTD.value = "";
+          showSTD(1);
+        } else if (event === 2) {
+          let s = addSTD.value;
+          if (s.trim() !== "") {
+            arrF2.push(s);
+            arrF2.sort();
+            localStorage.setItem("student2", JSON.stringify(arrF2));
+          }
+          addSTD.value = "";
+          showSTD(2);
+        } else if (event === 3) {
+          let s = addSTD.value;
+          if (s.trim() !== "") {
+            arrF3.push(s);
+            arrF3.sort();
+            localStorage.setItem("student3", JSON.stringify(arrF3));
+          }
+          addSTD.value = "";
+          showSTD(3);
+        } else if (event === 4) {
+          let s = addSTD.value;
+          if (s.trim() !== "") {
+            arrF4.push(s);
+            arrF4.sort();
+            localStorage.setItem("student4", JSON.stringify(arrF4));
+          }
+          addSTD.value = "";
+          showSTD(4);
+        }
+      });
+
+      btnSUB.addEventListener("click", () => {
+        if (event === 1) {
+          let s = addSUB.value;
+          if (s.trim() !== "") {
+            arrFs1.push(s);
+            arrFs1.sort();
+            localStorage.setItem("subject1", JSON.stringify(arrFs1));
+          }
+          addSUB.value = "";
+          showSUB(1);
+        } else if (event === 2) {
+          let s = addSUB.value;
+          if (s.trim() !== "") {
+            arrFs2.push(s);
+            arrFs2.sort();
+            localStorage.setItem("subject2", JSON.stringify(arrFs2));
+          }
+          addSUB.value = "";
+          showSUB(2);
+        } else if (event === 3) {
+          let s = addSUB.value;
+          if (s.trim() !== "") {
+            arrFs3.push(s);
+            arrFs3.sort();
+            localStorage.setItem("subject3", JSON.stringify(arrFs3));
+          }
+          addSUB.value = "";
+          showSUB(3);
+        } else if (event === 4) {
+          let s = addSUB.value;
+          if (s.trim() !== "") {
+            arrFs4.push(s);
+            arrFs4.sort();
+            localStorage.setItem("subject4", JSON.stringify(arrFs4));
+          }
+          addSUB.value = "";
+          showSUB(4);
+        }
+      });
+
+      function showSTD(i = 1) {
+        if (i === 1) {
+          student.innerHTML = `
+              <tr>
+              <td>id</td>
+              <td>student</td>
+              </tr>`;
+          arrF1.map((v, i) => {
+            student.innerHTML += `
+                      <tr>
+                      <td>${i + 1}</td>
+                      <td>${v}</td>
+                      </tr>
+                      `;
+          });
+        } else if (i === 2) {
+          student.innerHTML = `
+              <tr>
+              <td>id</td>
+              <td>student</td>
+              </tr>`;
+          arrF2.map((v, i) => {
+            student.innerHTML += `
+                      <tr>
+                      <td>${i + 1}</td>
+                      <td>${v}</td>
+                      </tr>
+                      `;
+          });
+        } else if (i === 3) {
+          student.innerHTML = `
+              <tr>
+              <td>id</td>
+              <td>student</td>
+              </tr>`;
+          arrF3.map((v, i) => {
+            student.innerHTML += `
+                      <tr>
+                      <td>${i + 1}</td>
+                      <td>${v}</td>
+                      </tr>
+                      `;
+          });
+        } else if (i === 4) {
+          student.innerHTML = `
+        <tr>
+        <td>id</td>
+        <td>student</td>
+        </tr>`;
+          arrF4.map((v, i) => {
+            student.innerHTML += `
+                <tr>
+                <td>${i + 1}</td>
+                <td>${v}</td>
+                </tr>
+                `;
+          });
+        }
+      }
+
+      function showSUB(i = 1) {
+        if (i === 1) {
+          subject.innerHTML = `<tr><td>subject</td></tr>`;
+          arrFs1.map((v) => {
+            subject.innerHTML += `
+                      <tr>
+                      <td>${v}</td>
+                      </tr>
+                      `;
+          });
+        } else if (i === 2) {
+          subject.innerHTML = `<tr><td>subject</td></tr>`;
+          arrFs2.map((v) => {
+            subject.innerHTML += `
+                      <tr>
+                      <td>${v}</td>
+                      </tr>
+                      `;
+          });
+        } else if (i === 3) {
+          subject.innerHTML = `<tr><td>subject</td></tr>`;
+          arrFs3.map((v) => {
+            subject.innerHTML += `
+                      <tr>
+                      <td>${v}</td>
+                      </tr>
+                      `;
+          });
+        } else if (i === 4) {
+          subject.innerHTML = `<tr><td>subject</td></tr>`;
+          arrFs4.map((v) => {
+            subject.innerHTML += `
+                <tr>
+                <td>${v}</td>
+                </tr>
+                `;
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
